@@ -41,6 +41,7 @@
 static void *
 get_zdata (Elf_Scn *strscn)
 {
+#ifdef HAVE_COMPRESSION
   size_t zsize, zalign;
   void *zdata = __libelf_decompress_elf (strscn, &zsize, &zalign);
   if (zdata == NULL)
@@ -51,6 +52,9 @@ get_zdata (Elf_Scn *strscn)
   strscn->zdata_align = zalign;
 
   return zdata;
+#else
+  return NULL;
+#endif
 }
 
 static bool validate_str (const char *str, size_t from, size_t to)

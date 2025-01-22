@@ -5,8 +5,6 @@ project(
   meson_version: '>=0.60.3',
 )
 
-lz = dependency('zlib', required: true)
-
 libelf = static_library(
   'elf',
   sources: files(
@@ -40,8 +38,6 @@ libelf = static_library(
     'src/elf_begin.c',
     'src/elf_clone.c',
     'src/elf_cntl.c',
-    'src/elf_compress.c',
-    'src/elf_compress_gnu.c',
     'src/elf_end.c',
     'src/elf_error.c',
     'src/elf_fill.c',
@@ -132,7 +128,6 @@ libelf = static_library(
   ),
   include_directories: include_directories('src', 'include'),
   c_args: ['-DHAVE_CONFIG_H'],
-  dependencies: [lz],
 )
 
 libelf_dep = declare_dependency(link_with: libelf, include_directories: include_directories('include'))
