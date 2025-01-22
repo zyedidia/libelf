@@ -134,3 +134,5 @@ libelf = static_library(
   c_args: ['-DHAVE_CONFIG_H'],
   dependencies: [lz],
 )
+
+libelf_dep = declare_dependency(link_with: libelf, include_directories: include_directories('include'))
