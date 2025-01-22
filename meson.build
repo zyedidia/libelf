@@ -7,7 +7,7 @@ project(
 
 lz = dependency('zlib', required: true)
 
-libelf = library(
+libelf = static_library(
   'elf',
   sources: files(
     'src/crc32.c',
